@@ -37,7 +37,7 @@ so the store can connect.
 The demo data is not necessary and you can only create the tables. 
 
 Then open `index.html` from your browser, using its path on the server, i.e. 
-`http://localhost/LilactPHPDemo`.
+`http://localhost/lilact-php-demo`.
 
 I have put a simple sleep instruction in the `users.php` to simulate the lags on a local
 server, you can simply comment or remove it to speed things up. Two users are defined 
