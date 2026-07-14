@@ -1,5 +1,5 @@
 const { require, createContext, useContext, useEffect, useMemo, useState } = Lilact;
-const apiClient = require("client/apiClient.jsx");
+const usersApi = require("client/usersApi.jsx");
 
 const UserContext = createContext(null);
 
@@ -18,7 +18,7 @@ function UserProvider({ children }) {
 		async function status() {
 			setLoading(true);
 			try {
-				const res = await apiClient("status", {});
+				const res = await usersApi("status", {});
 				setUser(res?.user ?? null);
 			} finally {
 				setLoading(false);
@@ -29,7 +29,7 @@ function UserProvider({ children }) {
 		async function login({ username, password }) {
 			setLoading(true);
 			try {
-				const res = await apiClient("login", { username, password });
+				const res = await usersApi("login", { username, password });
 				setUser(res?.user ?? null);
 				return res;
 			} finally {
@@ -40,7 +40,7 @@ function UserProvider({ children }) {
 		async function register({ username, password }) {
 			setLoading(true);
 			try {
-				const res = await apiClient("register", { username, password });
+				const res = await usersApi("register", { username, password });
 				setUser(res?.user ?? null);
 				return res;
 			} finally {
@@ -51,7 +51,7 @@ function UserProvider({ children }) {
 		async function logout() {
 			setLoading(true);
 			try {
-				await apiClient("logout", {});
+				await usersApi("logout", {});
 				setUser(null);
 			} finally {
 				setLoading(false);
@@ -61,7 +61,7 @@ function UserProvider({ children }) {
 		async function changePassword({ oldPassword, newPassword }) {
 			setLoading(true);
 			try {
-				return await apiClient("changePassword", { oldPassword, newPassword });
+				return await usersApi("changePassword", { oldPassword, newPassword });
 			} finally {
 				setLoading(false);
 			}

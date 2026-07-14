@@ -1,4 +1,4 @@
-module.exports = async function apiClient(action, payload) {
+module.exports = async function usersApi(action, payload) {
 	const res = await fetch("store/users.php", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
